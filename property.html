@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Property</title>
+
+	<!-- 开发环境版本，包含了用帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input v-bind:title="tip">
+		<input v-bind:title="'js' + tip">
+		<input :title="tip">
+	</div>
+
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: {
+				tip: '请在此输入你要查询的内容'
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Click</title>
+
+	<!-- 开发环境版本，包含了用帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<button v-on:click="onClickAlert">
+			点击弹窗提示
+		</button>
+		<button @click="onClickChangeText">
+			{{exampleChangeText}}
+		</button>
+	</div>
+
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: {
+				exampleChangeText: '点击更换文字'
+			},
+			methods: {
+				onClickAlert: function() {
+					alert('Hello 你好！From Alert')
+				},
+				onClickChangeText: function() {
+					this.exampleChangeText = '文字已更换，你还好吗？'
+				}
+			}
+		})
+	</script>
+</body>
+</html>

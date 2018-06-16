@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue.js 基础知识</title>
+
+	<!-- 开发环境版本，包含了用帮助的命令行警告 -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="template"></div>
+	<hr>
+
+	<div id="app" class="container">
+		<div>{{content}}</div>
+		<hr>
+
+		<h3>取值</h3>
+		<div v-text="html"></div>
+		<div v-html="html"></div>
+		<hr>
+
+		<h3>点击事件</h3>
+		<div v-on:click="handlerClick" v-bind:title='title'>(v-on:) Alert</div>
+		<div @click="handlerClick" :title='title'>（@）Alert</div>
+		<div @click="handlerClick" :title='"js + " + title'>（@）Alert</div>
+		<hr>
+
+		输入内容：<input type="text" name="" v-model="inputValue">
+		<div>内容提示：{{inputValue}}</div>
+		<hr>
+
+		<h3>监听</h3>
+		<div>
+			姓：<input type="text" name="" v-model="inputFirstName">
+			名：<input type="text" name="" v-model="inputLastName">
+		</div>
+		<div>姓名：{{fullName}}</div>
+		<div>长度：{{fullNameCount}}</div>
+		<hr>
+
+		<h3>条件</h3>
+		<div>
+			<div v-if="show">(删除) show</div>
+			<button @click="handlerShow">toggle</button>
+			<div v-show="show">（隐藏）show</div>
+			<button @click="handlerShow">toggle</button>
+		</div>
+		<hr>
+
+		<h3>循环</h3>
+		<div>
+			<ul>
+				<li v-for="(item, index) of array">
+					{{item}}
+				</li>
+			</ul>
+			<ol>
+				<li v-for="(item, index) in array">
+					{{item}}
+				</li>
+			</ol>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		new Vue({
+			el: '#template',
+			template: '<h3>hello {{msg}}</h3>',
+			data: {
+				msg: 'template'
+			}
+
+		})
+		new Vue({
+			el: '#app',
+			data: {
+				content: 'Hello',
+				html: '<h3>HTML</h3>',
+				title: '点击会有弹窗',
+				inputValue: 'input value',
+				inputFirstName: '',
+				inputLastName: '',
+				fullNameCount: 0,
+				show: true,
+				array: ['array1', 'array2', 'array3']
+			},
+			methods: {
+				handlerClick: function() {
+					alert(123)
+				},
+				handlerShow: function() {
+					this.show = !this.show
+				}
+			},
+			computed: {
+				fullName: function() {
+					return this.inputFirstName + ' ' + this.inputLastName
+				}
+			},
+			watch: {
+				fullName: function() {
+					// this.fullNameCount++ // 统计不正确
+					this.fullNameCount = this.fullName.length - 1
+				}
+			}
+		})
+	</script>
+</body>
+</html>

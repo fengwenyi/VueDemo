@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Watch</title>
+
+	<!-- 开发环境版本，包含了用帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		姓：<input v-model="firstName"> 名：<input v-model="lastName">
+		<div>姓名：{{fullName}}</div>
+		<div>长度：{{count}}</div>
+	</div>
+
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: {
+				firstName: '',
+				lastName: '',
+				count: 0
+			},
+			computed: {
+				fullName: function() {
+					return this.firstName + ' ' + 
+						   this.lastName
+				}
+			},
+			watch: {
+				fullName: function() {
+					this.count = this.fullName.length - 1
+				}
+			}
+		})
+	</script>
+</body>
+</html>

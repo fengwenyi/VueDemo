@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Value</title>
+
+	<!-- 开发环境版本，包含了用帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div>{{message}}</div>
+		<div v-text="message"></div>
+		<div v-html="message"></div>
+		<div v-text="htmlValue"></div>
+		<div v-html="htmlValue"></div>
+	</div>
+
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: {
+				message: 'Hello Vue!',
+				htmlValue: '<h3>我是h3标签</h3>'
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue.js 完成 todo List</title>
+
+	<!-- 开发环境版本，包含了用帮助的命令行警告 -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<h1>TODO LIST</h1>
+	<div id="app">
+		<input type="text" name="" v-model="todoValue">
+		<button @click="addTodoList">添加</button>
+		<ol>
+			<li v-for="(item, index) in todoList">{{item}}</li>
+		</ol>
+	</div>
+
+	<script type="text/javascript">
+		new Vue({
+			el: '#app',
+			data: {
+				todoValue: '',
+				todoList: []
+			},
+			methods: {
+				addTodoList: function() {
+					this.todoList.push(this.todoValue);
+					this.todoValue = ''
+				}
+			}
+		})
+	</script>
+</body>
+</html>
